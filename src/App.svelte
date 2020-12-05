@@ -20,7 +20,7 @@
   <SectionHeader text="Input" />
   <Input bind:input/>
 
-  {#if invalid.all.length}
+  <!-- {#if invalid.all.length} -->
     <SectionHeader text="Content" />
     <p>
       {#each input as char, i}
@@ -33,7 +33,7 @@
         {/if}
       {/each}
     </p>
-  {/if}
+  <!-- {/if} -->
 
   <SectionHeader text="Stripped" />
   <Output output={stripped} />
@@ -86,6 +86,7 @@
     width: 80%;
     font-family: 'Fira Code', monospace;
     background-color: var(--input-bg);
+    color: var(--text-color);
   }
 
 	main {
