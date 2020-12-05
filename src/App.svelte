@@ -3,7 +3,7 @@
   import Output from './Output.svelte';
   import SectionHeader from './SectionHeader.svelte';
   import Button from './Button.svelte';
-  import {findInvalid, stripInvalid} from './util/util.js';
+  import {copy, findInvalid, stripInvalid} from './util/util.js';
   import {smartPunctuation} from './util/constants.js';
 
   export let input = '';
@@ -20,28 +20,32 @@
   <SectionHeader text="Input" />
   <Input bind:input/>
 
-  <!-- {#if invalid.all.length} -->
-    <SectionHeader text="Content" />
-    <p>
-      {#each input as char, i}
-        {#if smartPunctuation[char]}
-          <span class="hl-yellow">{char}</span>
-        {:else if invalid.all.includes(i)}
-          <span class="hl-red">{char}</span>
-        {:else}
-          {char}
-        {/if}
-      {/each}
-    </p>
-  <!-- {/if} -->
+  <SectionHeader text="Content" />
+  <p>
+    {#each input as char, i}
+      {#if smartPunctuation[char]}
+        <span class="hl-yellow">{char}</span>
+      {:else if invalid.all.includes(i)}
+        <span class="hl-red">{char}</span>
+      {:else}
+        {char}
+      {/if}
+    {/each}
+  </p>
 
   <SectionHeader text="Stripped" />
   <Output output={stripped} />
 
+  <!-- TODO: add a fancier thing than alert -->
+
   <div class="buttons">
     <Button
       class="left-button"
-      buttonAction={() => {}}
+      buttonAction={() => {
+        copy(input)
+          .then(() => alert('Copied!'))
+          .catch(() => alert('An error occurred! :c'));
+      }}
     >Copy</Button>
 
     <Button
@@ -67,12 +71,6 @@
 
     --success: #A3BE8C;
     --error: #BF616A;
-
-    /*
-    --success: #61db56;
-    --success-alt: #76e66c;
-    --error: #db4444;
-    */
   }
 
   :global(body) {
