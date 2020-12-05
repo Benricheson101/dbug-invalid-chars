@@ -89,19 +89,19 @@
     color: var(--text-color);
   }
 
-	main {
-		text-align: center;
-		padding: 1em;
+  main {
+    text-align: center;
+    padding: 1em;
     max-width: 80%;
-		margin: 0 auto;
-	}
+    margin: 0 auto;
+  }
 
-	h1 {
-		color: var(--title-color);
-		text-transform: uppercase;
-		font-size: 4em;
+  h1 {
+    color: var(--title-color);
+    text-transform: uppercase;
+    font-size: 4em;
     font-weight: 100;
-	}
+  }
 
   .hl-red {
     background-color: var(--hl-red);
@@ -117,9 +117,9 @@
     justify-content: center;
   }
 
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
+  @media (min-width: 640px) {
+    main {
+      max-width: none;
+    }
+  }
 </style>
